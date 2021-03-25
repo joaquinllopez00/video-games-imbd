@@ -19,7 +19,7 @@ export const detailReducer = (state = initState, action) => {
         isLoading: true,
       };
     default:
-      return { ...state };
+      return state;
   }
 };
 

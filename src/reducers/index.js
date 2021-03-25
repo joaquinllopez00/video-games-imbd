@@ -1,9 +1,16 @@
-import { combineReducers } from "redux";
-import gamesReducer from "./gameReducer";
-import detailReducer from "./detailReducer";
-const rootReducer = combineReducers({
-  games: gamesReducer,
-  detail: detailReducer,
-});
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
-export default rootReducer;
+import rootReducer from "./reducers";
+import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
+const persistConfig = {
+  key: "primary",
+  storage: storage,
+  stateReconciler: autoMergeLevel2,
+  whitelist: ["library"],
+  blacklist: ["games", "detail"],
+};
+
+const pReducer = persistReducer(persistConfig, rootReducer);
+
+export default pReducer;

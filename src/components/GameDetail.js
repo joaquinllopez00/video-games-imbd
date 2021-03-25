@@ -1,10 +1,11 @@
 import React from "react";
-
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory, useLocation, Link } from "react-router-dom";
 import { smallImage } from "../util";
+import { popup_details } from "../animations";
 import playstation from "../img/playstation.svg";
 import steam from "../img/steam.svg";
 import xbox from "../img/xbox.svg";
@@ -13,14 +14,24 @@ import apple from "../img/apple.svg";
 import gamepad from "../img/gamepad.svg";
 import starEmpty from "../img/star-empty.png";
 import starFull from "../img/star-full.png";
-const GameDetail = ({ pathId }) => {
+import { addToLibraryAction, removeFromLibrary } from "../actions/gamesAction";
+
+const GameDetail = () => {
+  const dispatch = useDispatch();
   const { screen, game, isLoading } = useSelector((state) => state.detail);
+  const gamesInLibrary = useSelector((state) => state.library.games);
   const history = useHistory();
+  const location = useLocation();
+  const pathId = location.pathname.split("/")[1];
+  console.log(pathId, "gamedetail");
   const exitDetailHandler = (e) => {
     const element = e.target;
     if (element.classList.contains("shadow")) {
       document.body.style.overflow = "auto";
-      history.push("/");
+      pathId === "library" ? history.push("/library") : history.push("/");
+    }
+    if (element.classList.contains("to-library")) {
+      document.body.style.overflow = "auto";
     }
   };
 
@@ -53,11 +64,37 @@ const GameDetail = ({ pathId }) => {
     }
     return stars;
   };
+  const addToLibrary = (screen, game1) => {
+    if (!libraryChecker(game1)) {
+      dispatch(addToLibraryAction(game1));
+    }
+  };
 
+  const libraryChecker = (game) => {
+    for (let i = 0; i <= gamesInLibrary.length - 1; i++) {
+      console.log(game.name, gamesInLibrary[i].name, i);
+      if (gamesInLibrary[i].name === game.name) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  const removeGame = (game) => {
+    console.log(game);
+    history.push("/library");
+    dispatch(removeFromLibrary(game));
+  };
   return (
     <>
       {!isLoading && (
-        <CardShadow className="shadow" onClick={exitDetailHandler}>
+        <CardShadow
+          variants={popup_details}
+          initial="hidden"
+          animation="show"
+          className="shadow"
+          onClick={exitDetailHandler}
+        >
           <Detail>
             <Stats>
               <div className="rating">
@@ -80,6 +117,28 @@ const GameDetail = ({ pathId }) => {
               </Info>
             </Stats>
             <Media>
+              {!libraryChecker(game) ? (
+                <button
+                  onClick={() => {
+                    addToLibrary(screen, game);
+                  }}
+                >
+                  Add to Library ⊕
+                </button>
+              ) : (
+                <div className="button-container">
+                  <Link to={`/library`}>
+                    <button className="to-library">View games in Library</button>
+                  </Link>
+                  <button
+                    onClick={() => {
+                      removeGame(game);
+                    }}
+                  >
+                    Remove from Library
+                  </button>
+                </div>
+              )}
               <img src={smallImage(game.background_image, 1280)} alt="" />
             </Media>
             <Description>
@@ -119,6 +178,12 @@ const CardShadow = styled(motion.div)`
     width: 0.5rem;
     color: #69c9d0;
   }
+
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 const Detail = styled(motion.div)`
@@ -132,6 +197,21 @@ const Detail = styled(motion.div)`
 
   img {
     width: 100%;
+  }
+
+  button {
+    border: none;
+    color: rgb(0, 0, 0, 0.3);
+    background: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+    transition: all ease-in 0.2s;
+    cursor: pointer;
+  }
+
+  button:hover {
+    font-size: 1.3rem;
+    color: #ee1d52;
   }
 `;
 

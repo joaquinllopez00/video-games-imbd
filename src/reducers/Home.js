@@ -8,34 +8,25 @@ import GameDetail from "../components/GameDetail";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { fadeIn } from "../animations";
+
 export const Home = () => {
   const location = useLocation();
+  console.log(location.pathname);
   const pathId = location.pathname.split("/")[2];
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   useEffect(() => {
     console.log("hello");
     dispatch(loadGames());
   }, [dispatch]);
+  const { popular, newGames, searched } = useSelector((state) => state.games);
 
-  const { popular, newGames, upcoming, searched } = useSelector((state) => state.games);
-
-  const clearSearched = () => {
-    console.log("clear");
-    dispatch({ type: "CLEAR_SEARCHED" });
-  };
   return (
-    <GameList variants={fadeIn} initial="hidden" animate="show">
-      {pathId && <GameDetail />}
+    <GameList>
+      {pathId && <GameDetail pathId={pathId} />}
       {searched.length ? (
         <div>
-          <div className="clear-container">
-            <p>{searched.length} results </p>
-            <p className="clear" onClick={clearSearched}>
-              Clear
-            </p>
-          </div>
+          <p>{searched.length} results </p>
           <Games>
             {searched.map((game) => (
               <Game
@@ -51,12 +42,7 @@ export const Home = () => {
       ) : (
         ""
       )}
-      <h2>Upcoming Games</h2>
-      <Games>
-        {upcoming.map((game) => (
-          <Game name={game.name} released={game.released} id={game.id} image={game.background_image} key={game.id} />
-        ))}
-      </Games>
+
       <h2>Popular Games</h2>
       <Games>
         {popular.map((game) => (
@@ -77,19 +63,6 @@ const GameList = styled(motion.div)`
   padding: 0rem 5rem;
   h2 {
     padding: 5rem 0rem;
-  }
-
-  .clear {
-    cursor: pointer;
-  }
-
-  .clear:hover {
-    color: #ee1d52;
-  }
-
-  .clear-container {
-    display: flex;
-    justify-content: space-between;
   }
 `;
 
