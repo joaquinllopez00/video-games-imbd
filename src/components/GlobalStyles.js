@@ -21,10 +21,11 @@ const GlobalStyles = createGlobalStyle`
       width: 100%
     }
     h2{
-      font-size: 3rem;
-      font-family: 'Merriweather', serif;
-      font-weight: lighter;
-      color: #EE1D52
+      font-size: 4rem;
+      font-family: 'DM Serif Display', serif;
+      background: -webkit-linear-gradient(bottom right,#d13f3f,#ee1d52);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     h3{
       font-size: 2rem;
@@ -47,10 +48,6 @@ const GlobalStyles = createGlobalStyle`
     input{
       font-weight: bold;
       font-family: "Montserrat", sans-serif;
-    }
-
-    button{
-    
     }
   }
 `;

@@ -1,5 +1,4 @@
 import axios from "axios";
-import getStorage from "redux-persist/es/storage/getStorage";
 import { popularGamesURL, upcomingGamesURL, newGamesURL, searchGameURL } from "../api";
 
 export const loadGames = () => async (dispatch) => {

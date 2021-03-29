@@ -44,12 +44,13 @@ export const Game = ({ name, released, image, id }) => {
 };
 
 const StyledGame = styled(motion.div)`
-  height: 60vh;
+  height: 50vh;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   border-radius: 1rem;
   overflow: hidden;
   cursor: pointer;
+  background: white;
   img {
     width: 100%;
     height: 80%;

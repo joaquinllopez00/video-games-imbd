@@ -17,7 +17,10 @@ function App() {
         <Route path={["/game/:id"]}>
           <Home />
         </Route>
-        <Route path={(["/library/game/:id"], "/library")}>
+        <Route exact path="/library">
+          <Library />
+        </Route>
+        <Route path={["/library/game/:id"]}>
           <Library />
         </Route>
       </Switch>

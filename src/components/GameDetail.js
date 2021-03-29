@@ -6,6 +6,9 @@ import { useDispatch } from "react-redux";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { smallImage } from "../util";
 import { popup_details } from "../animations";
+import { fadeIn } from "../animations";
+
+import bubbleLoader from "../img/loader.gif";
 import playstation from "../img/playstation.svg";
 import steam from "../img/steam.svg";
 import xbox from "../img/xbox.svg";
@@ -15,6 +18,8 @@ import gamepad from "../img/gamepad.svg";
 import starEmpty from "../img/star-empty.png";
 import starFull from "../img/star-full.png";
 import { addToLibraryAction, removeFromLibrary } from "../actions/gamesAction";
+
+import { LoadingContainer } from "../pages/Home";
 
 const GameDetail = () => {
   const dispatch = useDispatch();
@@ -87,7 +92,15 @@ const GameDetail = () => {
   };
   return (
     <>
-      {!isLoading && (
+      {isLoading ? (
+        <CardShadow>
+          <LoadingContainerDetail variants={fadeIn} initial="hidden" animate="show">
+            <div className="content-container">
+              <img src={bubbleLoader} alt="Loading..." />
+            </div>
+          </LoadingContainerDetail>
+        </CardShadow>
+      ) : (
         <CardShadow
           variants={popup_details}
           initial="hidden"
@@ -165,7 +178,7 @@ const CardShadow = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
-
+  z-index: 1;
   &::-webkit-scrollbar {
     width: 0.5rem;
     color: #69c9d0;
@@ -250,6 +263,20 @@ const Media = styled(motion.div)`
 
 const Description = styled(motion.div)`
   margin: 5rem 0rem;
+`;
+
+const LoadingContainerDetail = styled(motion.div)`
+  background: linear-gradient(to bottom, #1b1e23, rgba(0, 0, 0, 1));
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export default GameDetail;
