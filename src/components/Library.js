@@ -65,7 +65,8 @@ const StyledGame = styled(motion.div)`
 
 const GameList = styled(motion.div)`
   padding: 0rem 5rem;
-  h2 {
+  background: #1b1e23;
+  s h2 {
     padding: 5rem 0rem;
   }
 
