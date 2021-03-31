@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "antd": "^4.15.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "framer-motion": "^3.10.5",
@@ -20,6 +21,7 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.1",
+    "use-force-update": "^1.0.7",
     "web-vitals": "^1.1.1"
   },
   "scripts": {

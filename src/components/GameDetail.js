@@ -86,8 +86,11 @@ const GameDetail = () => {
   };
 
   const removeGame = (game) => {
-    console.log(game);
-    history.push("/library");
+    if (pathId === "/library") {
+      history.push("/library");
+      document.body.style.overflow = "auto";
+    }
+
     dispatch(removeFromLibrary(game));
   };
   return (

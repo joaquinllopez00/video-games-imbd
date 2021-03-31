@@ -16,17 +16,26 @@ export const Home = () => {
   const pathId = location.pathname.split("/")[2];
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const [popularSize, setPopular] = useState(10);
+  const [newGamesSize, setNewGames] = useState(10);
+  const [upcomingSize, setUpcoming] = useState(10);
   useEffect(() => {
-    dispatch(loadGames());
+    dispatch(loadGames(popularSize, newGamesSize, upcomingSize));
     setTimeout(() => {
       setLoading(false);
     }, 3500);
-  }, [dispatch]);
+  }, [dispatch, popularSize, newGamesSize, upcomingSize]);
 
   const { popular, newGames, upcoming, searched } = useSelector((state) => state.games);
 
   const clearSearched = () => {
     dispatch({ type: "CLEAR_SEARCHED" });
+  };
+
+  const handleLoadMore = (e) => {
+    e.target.classList.contains("upcoming") && setUpcoming(upcomingSize + 5);
+    e.target.classList.contains("popular") && setPopular(popularSize + 5);
+    e.target.classList.contains("new-games") && setNewGames(newGamesSize + 5);
   };
   return (
     <>
@@ -86,6 +95,9 @@ export const Home = () => {
                   key={game.id}
                 />
               ))}
+              <button className="upcoming more" onClick={(e) => handleLoadMore(e)}>
+                Load More
+              </button>
             </Games>
             <InfoContainer>
               <h2>Popular Games</h2>
@@ -101,6 +113,9 @@ export const Home = () => {
                   key={game.id}
                 />
               ))}
+              <button className="popular more" onClick={(e) => handleLoadMore(e)}>
+                Load More
+              </button>
             </Games>
             <InfoContainer>
               <h2>Newly Released Games</h2>
@@ -116,6 +131,9 @@ export const Home = () => {
                   key={game.id}
                 />
               ))}
+              <button className="new-games more" onClick={(e) => handleLoadMore(e)}>
+                Load More
+              </button>
             </Games>
           </GameList>
         </>
@@ -174,6 +192,14 @@ const Games = styled(motion.div)`
   grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   grid-column-gap: 3rem;
   grid-row-gap: 5rem;
+
+  .more {
+    border-radius: 1rem;
+    border: none;
+    font-size: 4rem;
+    height: 10rem;
+    width: 100%;
+  }
 `;
 
 export const LoadingContainer = styled(motion.div)`

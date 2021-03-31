@@ -30,16 +30,16 @@ console.log(currentDate);
 const popular_games = `games?key=${api_key}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
 const upcoming_games = `games?key=${api_key}&dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
 const new_games = `games?key=${api_key}&dates=${currentDate},${nextYear}&ordering=-released&page_size=10`;
-export const popularGamesURL = () => {
-  return `${base_url}${popular_games}`;
+export const popularGamesURL = (page_size) => {
+  return `${base_url}${popular_games}&page_size=${page_size}`;
 };
 
-export const upcomingGamesURL = () => {
-  return `${base_url}${upcoming_games}`;
+export const upcomingGamesURL = (page_size) => {
+  return `${base_url}${upcoming_games}&page_size=${page_size}`;
 };
 
-export const newGamesURL = () => {
-  return `${base_url}${new_games}`;
+export const newGamesURL = (page_size) => {
+  return `${base_url}${new_games}&page_size=${page_size}`;
 };
 
 export const gameDetailsURL = (id) => {
