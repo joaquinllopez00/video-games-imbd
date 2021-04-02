@@ -23,7 +23,7 @@ const Nav = () => {
 
   return (
     <StyledNav variants={fadeIn} initial="hidden" animate="show">
-      <a className="logo" href="/">
+      <a className="logo" href="/video-games-imbd/">
         IVGDb
       </a>
       <form className="search">
