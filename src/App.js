@@ -13,19 +13,19 @@ function App() {
       <Nav />
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route exact path="/">
+          <Route exact path={process.env.PUBLIC_URL + "/"}>
             <Home />
           </Route>
-          <Route path={["/game/:id"]}>
+          <Route path={`${process.env.PUBLIC_URL} + ${["/game/:id"]}`}>
             <Home />
           </Route>
-          <Route exact path="/library">
+          <Route exact path={process.env.PUBLIC_URL + "/library"}>
             <Library />
           </Route>
           <Route path={["/library/game/:id"]}>
             <Library />
           </Route>
-          <Route path="/about">
+          <Route path={process.env.PUBLIC_URL + "/about"}>
             <About />
           </Route>
         </Switch>
