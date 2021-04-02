@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { fetchSearch } from "../actions/gamesAction";
 import { useDispatch } from "react-redux";
 import { fadeIn } from "../animations";
-import nav from "../img/nav.png";
+
 const Nav = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -16,7 +16,6 @@ const Nav = () => {
   };
   const submitSearch = (e) => {
     e.preventDefault();
-    console.log(textInput);
     dispatch(fetchSearch(textInput));
     setTextInput("");
     history.push("/");
@@ -51,7 +50,7 @@ const NavlinkContainer = styled(motion.nav)`
   a {
     color: white;
     padding: 1rem 3rem;
-    border: 1px solid darkred;
+
     transition: all ease 0.3s;
   }
 
