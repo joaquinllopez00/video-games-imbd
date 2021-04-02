@@ -11,7 +11,8 @@ function App() {
     <div>
       <GlobalStyles />
       <Nav />
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
+        {/* basename={process.env.PUBLIC_URL} */}
         <Switch>
           <Route exact path={process.env.PUBLIC_URL + "/"}>
             <Home />
