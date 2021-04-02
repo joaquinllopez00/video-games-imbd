@@ -13,7 +13,7 @@ function App() {
       <Nav />
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
-          <Route exact path={process.env.PUBLIC_URL + "/"}>
+          <Route exact path="/">
             <Home />
           </Route>
           <Route path={["/game/:id"]}>
