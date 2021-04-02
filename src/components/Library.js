@@ -1,21 +1,17 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { loadDetail } from "../actions/detailAction";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Game } from "../components/Game";
 import GameDetail from "../components/GameDetail";
 import { fadeIn } from "../animations";
 export const Library = () => {
   const { games } = useSelector((state) => state.library);
-  const dispatch = useDispatch();
+
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
-  const loadDetailHandler = () => {
-    dispatch(loadDetail());
-    document.body.style.overflow = "hidden";
-  };
+
   return (
     <GameList variants={fadeIn} initial="hidden" animate="show">
       {pathId && <GameDetail />}
@@ -43,30 +39,10 @@ export const Library = () => {
   );
 };
 
-const StyledGame = styled(motion.div)`
-  height: 60vh;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  border-radius: 1rem;
-  overflow: hidden;
-  cursor: pointer;
-  img {
-    width: 100%;
-    height: 80%;
-    object-fit: cover;
-  }
-  .title-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0rem 1.5rem;
-  }
-`;
-
 const GameList = styled(motion.div)`
   padding: 0rem 5rem;
   background: #1b1e23;
-  s h2 {
+  h2 {
     padding: 5rem 0rem;
   }
 
@@ -81,6 +57,9 @@ const GameList = styled(motion.div)`
   .clear-container {
     display: flex;
     justify-content: space-between;
+  }
+  p {
+    color: white;
   }
 `;
 

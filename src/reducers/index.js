@@ -7,8 +7,8 @@ const persistConfig = {
   key: "primary",
   storage: storage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ["library"],
-  blacklist: ["games", "detail"],
+  whitelist: ["library", "detail"],
+  blacklist: ["games"],
 };
 
 const pReducer = persistReducer(persistConfig, rootReducer);

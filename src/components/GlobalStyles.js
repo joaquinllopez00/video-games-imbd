@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html{
+    height: 100%;
     &::-webkit-scrollbar{
       width: 0.5rem;
       height: 2vh;
@@ -19,6 +20,11 @@ const GlobalStyles = createGlobalStyle`
     body{
       font-family: 'Montserrat', sans-serif;
       width: 100%
+      height: 100%;
+
+       @media screen and (max-width: 768px) {
+          overflow-x:hidden;
+      }
     }
     h2{
       font-size: 4rem;
@@ -26,6 +32,11 @@ const GlobalStyles = createGlobalStyle`
       background: -webkit-linear-gradient(bottom right,#d13f3f,#ee1d52);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
+        @media screen and (max-width: 768px) {
+          font-size: 2.5rem;
+          text-align: center;
+      }
     }
     h3{
       font-size: 2rem;
@@ -36,6 +47,9 @@ const GlobalStyles = createGlobalStyle`
       font-size: 1.2rem;
       line-height: 200%;
       color: rgb(0,0,0,0.3);
+        @media screen and (max-width: 768px) {
+        font-size: 0.8rem;
+      }
     }
     a{
       text-decoration: none;
@@ -49,6 +63,13 @@ const GlobalStyles = createGlobalStyle`
       font-weight: bold;
       font-family: "Montserrat", sans-serif;
     }
+    button{
+      outline: none;
+    }
+
+     @media screen and (max-width: 768px) {
+          overflow-x: hidden;
+      }
   }
 `;
 

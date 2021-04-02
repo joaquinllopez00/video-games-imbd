@@ -47,11 +47,21 @@ const Nav = () => {
 const NavlinkContainer = styled(motion.nav)`
   background: linear-gradient(to bottom right, #ee1d52, darkred);
   padding: 1rem 0rem;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem;
+    margin-right: 1rem;
+    background: none;
+  }
   a {
     color: white;
     padding: 1rem 3rem;
-
     transition: all ease 0.3s;
+    @media screen and (max-width: 768px) {
+      font-size: 0.8rem;
+      padding: 0.2rem;
+    }
   }
 
   a:hover {
@@ -68,6 +78,9 @@ const StyledNav = styled(motion.nav)`
   background: #1b1e23;
   position: relative;
 
+  @media screen and (max-width: 768px) {
+    padding: 0rem;
+  }
   .logo {
     background: linear-gradient(to bottom right, #ee1d52, darkred);
     color: white;
@@ -77,6 +90,12 @@ const StyledNav = styled(motion.nav)`
     border-radius: 10px;
     box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.3);
     transition: all ease 0.3s;
+
+    @media screen and (max-width: 768px) {
+      padding: 0.5rem 0.7rem;
+      margin-left: 1rem;
+      font-size: 1.2rem;
+    }
   }
 
   .logo:hover {
@@ -87,14 +106,23 @@ const StyledNav = styled(motion.nav)`
     display: flex;
     align-items: center;
     box-shadow: 0px 0px 20px rgba(167, 0, 0, 0.5);
+    @media screen and (max-width: 768px) {
+      padding: 0.5rem 0.7rem;
+      font-size: 1.2rem;
+      box-shadow: none;
+    }
   }
   input {
     width: 30vw;
     padding: 0.2rem 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     border: none;
     font-weight: bold;
     outline: none;
+    @media screen and (max-width: 768px) {
+      padding: 0.5rem 0.7rem;
+      font-size: 1.2rem;
+    }
   }
   button {
     padding: 0.4rem 1rem;
@@ -105,6 +133,10 @@ const StyledNav = styled(motion.nav)`
     font-size: 1.2rem;
     transition: all ease-in 0.2s;
     color: white;
+    @media screen and (max-width: 768px) {
+      padding: 0.5rem 0.7rem;
+      font-size: 1.2rem;
+    }
   }
 
   button:hover {

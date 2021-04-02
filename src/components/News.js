@@ -2,15 +2,31 @@ import "antd/dist/antd.css";
 import { Carousel } from "antd";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useLocation, useHistory } from "react-router-dom";
-import { fadeIn } from "../animations";
+import { useHistory } from "react-router-dom";
+
 import React, { useState } from "react";
-import game_wall from "../img/game_wall.png";
+import { useDispatch, useSelector } from "react-redux";
+
+import { cancelCollapse, collapseNews } from "../actions/gamesAction";
 export const News = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const [collapsed, setCollapsed] = useState(false);
+  const collapse = useSelector((state) => state.games.collapse);
+
   const handleCollapse = () => {
     setCollapsed(!collapsed);
+    console.log(collapse);
+    if (collapsed === false) {
+      console.log("worked", "ifcollapse");
+      dispatch(collapseNews);
+    } else {
+      console.log("cancelCollapse");
+      dispatch(cancelCollapse);
+    }
+    console.log(collapsed);
+    console.log(collapse, "redux");
   };
 
   const handleViewMore = () => {
@@ -22,7 +38,6 @@ export const News = () => {
         className="collapse-button"
         onClick={handleCollapse}
         style={collapsed ? { background: "#1B1E23", border: "none", color: "white" } : {}}
-        s
       >
         {collapsed ? "Expand News" : "Collapse News"}
       </button>
@@ -103,6 +118,12 @@ const NewsSlideContainer = styled(motion.div)`
   width: 100%;
   padding: 2rem 0rem;
   position: relative;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem;
+  }
   .logo {
     background: linear-gradient(to bottom right, #ee1d52, darkred);
     color: white;
@@ -113,6 +134,10 @@ const NewsSlideContainer = styled(motion.div)`
     border: darkred;
     box-shadow: 0px 0px 60px rgba(255, 0, 0, 0.4);
     transition: all ease 0.3s;
+
+    @media screen and (max-width: 768px) {
+      padding: 2rem 1rem;
+    }
   }
 
   .logo:hover {
@@ -123,18 +148,25 @@ const NewsSlideContainer = styled(motion.div)`
 
   p {
     width: 40vw;
+    @media screen and (max-width: 768px) {
+      width: 50vw;
+      font-size: 1rem;
+    }
   }
 
   .view-more {
     border: none;
     border-radius: 10px;
     color: red;
-    right: 8vw;
+    right: 20vw;
     transition: all ease-in 0.2s;
     cursor: pointer;
     margin-top: 0.3rem;
     position: absolute;
     background: none;
+    @media screen and (max-width: 768px) {
+      bottom: 10px;
+    }
   }
   .view-more:hover {
     font-size: 1rem;

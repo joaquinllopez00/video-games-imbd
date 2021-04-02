@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useHistory, useLocation, Link } from "react-router-dom";
 import { smallImage } from "../util";
 import { popup_details } from "../animations";
@@ -15,11 +14,8 @@ import xbox from "../img/xbox.svg";
 import nintendo from "../img/nintendo.svg";
 import apple from "../img/apple.svg";
 import gamepad from "../img/gamepad.svg";
-import starEmpty from "../img/star-empty.png";
-import starFull from "../img/star-full.png";
 import { addToLibraryAction, removeFromLibrary } from "../actions/gamesAction";
-
-import { LoadingContainer } from "../pages/Home";
+import { stopLoad } from "../actions/detailAction";
 
 const GameDetail = () => {
   const dispatch = useDispatch();
@@ -28,7 +24,12 @@ const GameDetail = () => {
   const history = useHistory();
   const location = useLocation();
   const pathId = location.pathname.split("/")[1];
-  console.log(pathId, "gamedetail");
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(stopLoad());
+    }, 3000);
+  }, [dispatch]);
   const exitDetailHandler = (e) => {
     const element = e.target;
     if (element.classList.contains("shadow")) {
@@ -57,18 +58,6 @@ const GameDetail = () => {
     }
   };
 
-  const getStars = () => {
-    const stars = [];
-    const rating = Math.floor(game.rating);
-    for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
-        stars.push(<img alt="star" key={i} src={starFull}></img>);
-      } else {
-        stars.push(<img alt="star" key={i} src={starEmpty}></img>);
-      }
-    }
-    return stars;
-  };
   const addToLibrary = (screen, game1) => {
     if (!libraryChecker(game1)) {
       dispatch(addToLibraryAction(game1));
@@ -115,8 +104,15 @@ const GameDetail = () => {
             <Stats>
               <div className="rating">
                 <h3>{game.name}</h3>
-                <p>Rating : {game.rating}</p>
-                {getStars()}
+                <p>
+                  Rating : {game.rating} | MetaCritic: {game.metacritic === null ? "NA" : game.metacritic}
+                </p>
+                <div className="genres">
+                  <p>Genres:&nbsp;</p>
+                  {game.genres.map((g, i) => (
+                    <p>{i === game.genres.length - 1 ? g.name : g.name + ","}</p>
+                  ))}
+                </div>
               </div>
               <Info>
                 <h3>Platforms</h3>
@@ -200,6 +196,19 @@ const CardShadow = styled(motion.div)`
     justify-content: space-between;
     align-items: center;
   }
+
+  .genres {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    h3 {
+      font-size: 1.2rem;
+    }
+    width: 100%;
+  }
 `;
 
 const Detail = styled(motion.div)`
@@ -210,6 +219,10 @@ const Detail = styled(motion.div)`
   position: absolute;
   left: 10%;
   color: black;
+
+  @media screen and (max-width: 768px) {
+    padding: 0.5rem;
+  }
 
   img {
     width: 100%;
@@ -223,6 +236,12 @@ const Detail = styled(motion.div)`
     font-size: 1.2rem;
     transition: all ease-in 0.2s;
     cursor: pointer;
+
+    @media screen and (max-width: 768px) {
+      font-size: 0.7rem;
+      padding: 0rem;
+      width: 100%;
+    }
   }
 
   button:hover {
@@ -235,10 +254,15 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   img {
     width: 1.5rem;
     display: inline;
     height: 1.5rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 
@@ -248,10 +272,16 @@ const Info = styled(motion.div)`
 
 const Platforms = styled(motion.div)`
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 5rem;
+  text-align: center;
+
+  @media screen and (max-width: 768px) {
+    padding: 0rem;
+  }
 
   img {
-    margin-left: 3rem;
+    margin-right: 0.5rem;
   }
 `;
 
@@ -266,6 +296,9 @@ const Media = styled(motion.div)`
 
 const Description = styled(motion.div)`
   margin: 5rem 0rem;
+  @media screen and (max-width: 768px) {
+    margin: 1rem 0rem;
+  }
 `;
 
 const LoadingContainerDetail = styled(motion.div)`

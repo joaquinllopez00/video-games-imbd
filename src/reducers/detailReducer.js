@@ -18,6 +18,12 @@ export const detailReducer = (state = initState, action) => {
         ...state,
         isLoading: true,
       };
+
+    case "STOP_LOADING":
+      return {
+        ...state,
+        isLoading: false,
+      };
     default:
       return state;
   }

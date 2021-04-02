@@ -14,4 +14,12 @@ export const loadDetail = (id) => async (dispatch) => {
       screen: screenShotData.data,
     },
   });
+
+  dispatch({
+    type: "STOP_LOADING",
+  });
 };
+
+export const stopLoad = () => ({
+  type: "STOP_LOADING",
+});
