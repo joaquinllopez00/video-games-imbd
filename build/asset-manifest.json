@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/video-games-imbd/static/js/main.e1675f84.chunk.js",
-    "main.js.map": "/video-games-imbd/static/js/main.e1675f84.chunk.js.map",
+    "main.js": "/video-games-imbd/static/js/main.9dba3094.chunk.js",
+    "main.js.map": "/video-games-imbd/static/js/main.9dba3094.chunk.js.map",
     "runtime-main.js": "/video-games-imbd/static/js/runtime-main.a42aa1ea.js",
     "runtime-main.js.map": "/video-games-imbd/static/js/runtime-main.a42aa1ea.js.map",
     "static/css/2.a5497ee8.chunk.css": "/video-games-imbd/static/css/2.a5497ee8.chunk.css",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.a42aa1ea.js",
     "static/css/2.a5497ee8.chunk.css",
     "static/js/2.c64cf32a.chunk.js",
-    "static/js/main.e1675f84.chunk.js"
+    "static/js/main.9dba3094.chunk.js"
   ]
 }
