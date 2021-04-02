@@ -42,6 +42,7 @@ export const Library = () => {
 const GameList = styled(motion.div)`
   padding: 0rem 5rem;
   background: #1b1e23;
+  min-height: 100vh;
   h2 {
     padding: 5rem 0rem;
   }
