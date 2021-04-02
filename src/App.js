@@ -11,7 +11,7 @@ function App() {
     <div>
       <GlobalStyles />
       <Nav />
-      <Router basename="https://joaquinllopez00.github.io/video-games-imbd/">
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/">
             <Home />
