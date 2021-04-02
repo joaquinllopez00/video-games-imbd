@@ -33,10 +33,10 @@ const Nav = () => {
         </button>
       </form>
       <NavlinkContainer>
-        <a className="about" href="/about">
+        <a className="about" href="/video-games-imbd/about">
           About
         </a>
-        <a className="library" href="/library">
+        <a className="library" href="/video-games-imbd/library">
           Library
         </a>
       </NavlinkContainer>
