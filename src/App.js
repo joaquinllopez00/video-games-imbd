@@ -11,22 +11,21 @@ function App() {
     <div>
       <GlobalStyles />
       <Nav />
-      <Router>
-        {/* basename={process.env.PUBLIC_URL} */}
+      <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path={process.env.PUBLIC_URL + "/"}>
             <Home />
           </Route>
-          <Route path={`${process.env.PUBLIC_URL} + ${["/game/:id"]}`}>
+          <Route path={["/game/:id"]}>
             <Home />
           </Route>
-          <Route exact path={process.env.PUBLIC_URL + "/library"}>
+          <Route exact path="/library">
             <Library />
           </Route>
           <Route path={["/library/game/:id"]}>
             <Library />
           </Route>
-          <Route path={process.env.PUBLIC_URL + "/about"}>
+          <Route path="/about">
             <About />
           </Route>
         </Switch>
