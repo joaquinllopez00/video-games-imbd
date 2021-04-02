@@ -39,3 +39,11 @@ export const removeFromLibrary = (game) => ({
     games: game,
   },
 });
+
+export const cancelCollapse = () => ({
+  type: "CANCEL_COLLAPSE",
+});
+
+export const collapseNews = () => ({
+  type: "COLLAPSE",
+});
