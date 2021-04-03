@@ -11,7 +11,6 @@ function App() {
     <div>
       <GlobalStyles />
       <Nav />
-
       <Switch>
         <Route exact path="/">
           <Home />
