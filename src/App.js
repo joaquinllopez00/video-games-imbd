@@ -4,7 +4,7 @@ import { Home } from "./pages/Home";
 import { Library } from "./components/Library";
 import { About } from "./components/About";
 import GlobalStyles from "./components/GlobalStyles";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
 function App() {
   return (
