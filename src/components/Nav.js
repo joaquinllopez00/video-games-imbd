@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { fetchSearch } from "../actions/gamesAction";
@@ -33,12 +33,9 @@ const Nav = () => {
         </button>
       </form>
       <NavlinkContainer>
-        <a className="about" href="/video-games-imbd/about">
-          About
-        </a>
-        <a className="library" href="/video-games-imbd/library">
-          Library
-        </a>
+        <Link to={`/about`}>About</Link>
+
+        <Link to={`/library`}>Library</Link>
       </NavlinkContainer>
     </StyledNav>
   );
