@@ -175,6 +175,7 @@ const CardShadow = styled(motion.div)`
   overflow-y: scroll;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
+  text-align: center;
   top: 0;
   left: 0;
   z-index: 1;
@@ -203,6 +204,11 @@ const CardShadow = styled(motion.div)`
     justify-content: center;
   }
 
+  .rating {
+    p {
+      color: grey;
+    }
+  }
   @media screen and (max-width: 768px) {
     h3 {
       font-size: 1.2rem;

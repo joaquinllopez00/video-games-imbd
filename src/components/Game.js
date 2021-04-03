@@ -56,6 +56,8 @@ export const Game = ({ name, released, image, id, metacritic, genres }) => {
             <h3>{name}</h3>
             <div className="title-container">
               <p>Release Date: {released}</p>
+              <p>MetaCritic: {metacriticCalc(metacritic)}</p>
+              <p>Genres: {genres.map((g, i) => (i === genres.length - 1 ? g.name : g.name + ",  "))}</p>
             </div>
             <img src={image} alt={name} />
           </Link>

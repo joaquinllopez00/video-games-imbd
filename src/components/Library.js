@@ -28,6 +28,8 @@ export const Library = () => {
                 id={game.id}
                 image={game.background_image}
                 key={game.id}
+                metacritic={game.metacritic}
+                genres={game.genres}
               />
             ))}
           </Games>
