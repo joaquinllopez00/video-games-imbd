@@ -86,7 +86,7 @@ const StyledGame = styled(motion.div)`
   }
   img {
     width: 100%;
-    height: 80%;
+    height: 85%;
     object-fit: cover;
   }
   .title-container {

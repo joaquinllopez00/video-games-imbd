@@ -26,6 +26,9 @@ const AboutContainer = styled(motion.div)`
   padding: 1rem 4rem;
   background: #1b1e23;
   height: 80.5vh;
+  @media screen and (max-width: 768px) {
+    height: 100vh;
+  }
 `;
 
 const ContentContainer = styled(motion.div)`
@@ -33,9 +36,9 @@ const ContentContainer = styled(motion.div)`
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 4rem;
+  padding: 1rem 4rem;
   p {
     color: white;
-    padding: 0rem 20rem;
+    padding: 0rem 0rem;
   }
 `;

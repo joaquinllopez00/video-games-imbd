@@ -119,7 +119,7 @@ const NewsSlideContainer = styled(motion.div)`
   padding: 2rem 0rem;
   position: relative;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1028px) {
     display: flex;
     flex-direction: column;
     padding: 0rem;

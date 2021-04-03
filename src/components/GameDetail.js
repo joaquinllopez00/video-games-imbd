@@ -244,15 +244,19 @@ const Detail = styled(motion.div)`
     cursor: pointer;
 
     @media screen and (max-width: 768px) {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       padding: 0rem;
-      width: 100%;
+      width: 20vw;
     }
   }
 
   button:hover {
     font-size: 1.3rem;
     color: #ee1d52;
+    @media screen and (max-width: 768px) {
+      font-size: 0.7rem;
+      padding: 0rem;
+    }
   }
 `;
 

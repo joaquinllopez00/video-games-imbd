@@ -264,7 +264,7 @@ export const LoadingContainer = styled(motion.div)`
     align-items: center;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 728px) {
     height: 100vh;
   }
 `;
