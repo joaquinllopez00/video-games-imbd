@@ -76,17 +76,31 @@ const NavlinkContainer = styled(motion.nav)`
     top: 0rem;
     display: flex;
     flex-direction: column;
+    flex-flow: column;
     text-align: center;
     padding: 0rem;
     position: absolute;
     width: 50vw;
     background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
     z-index: 2;
-
+    transition: all ease 0.3s;
+    ${(props) => {
+      if (props.toggled) {
+        return `
+        display: block;
+        opacity: 1;
+        `;
+      } else {
+        return `
+        display: none;
+        opacity: 0;
+        `;
+      }
+    }}
     .spacer {
       width: 100%;
       height: 3.1rem;
-      background: rgba(200, 0, 0, 0.6);
+      background: rgba(200, 0, 0, 1);
       border: 1px solid rgba(200, 0, 0, 0.1);
     }
     ${(props) => {
@@ -110,7 +124,7 @@ const NavlinkContainer = styled(motion.nav)`
       font-size: 0.8rem;
       padding: 1rem 0rem;
       z-index: 3;
-      display: inline-block;
+      display: block;
     }
   }
 
@@ -132,9 +146,9 @@ const StyledNav = styled(motion.nav)`
   justify-content: space-between;
   background: #1b1e23;
   position: relative;
-
   @media screen and (max-width: 1028px) {
     padding: 0rem;
+    
   }
 
   .burger {

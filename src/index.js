@@ -9,6 +9,7 @@ import ReduxThunk from "redux-thunk";
 import { HashRouter as Router } from "react-router-dom";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/lib/integration/react";
+import GlobalStyles from "./components/GlobalStyles";
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(pReducer, {}, composeEnhancer(applyMiddleware(ReduxThunk)));
 const persistor = persistStore(store);
@@ -17,6 +18,7 @@ ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router basename={process.env.PUBLIC_URL}>
+          <GlobalStyles />
           <App />
         </Router>
       </PersistGate>

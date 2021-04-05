@@ -13,6 +13,9 @@ const GlobalStyles = createGlobalStyle`
       width: 0.5rem;
       height: 2vh;
     }
+    @media screen and (max-width: 1068px) {
+          overflow-x:hidden;
+      }
 
     &::-webkit-scrollbar-thumb{
       background-color: red;
@@ -21,8 +24,7 @@ const GlobalStyles = createGlobalStyle`
       font-family: 'Montserrat', sans-serif;
       width: 100%
       height: 100%;
-
-       @media screen and (max-width: 768px) {
+       @media screen and (max-width: 1068px) {
           overflow-x:hidden;
       }
     }
@@ -68,7 +70,7 @@ const GlobalStyles = createGlobalStyle`
       outline: none;
     }
 
-     @media screen and (max-width: 768px) {
+     @media screen and (max-width: 1068px) {
           overflow-x: hidden;
       }
   }

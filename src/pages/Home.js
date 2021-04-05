@@ -154,7 +154,7 @@ const GameList = styled(motion.div)`
   padding: 1rem 4rem;
   background: #1b1e23;
   text-align: center;
-
+  overflow-x: hidden;
   @media screen and (max-width: 768px) {
     padding: 0rem;
   }
