@@ -15,16 +15,16 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path={["/game/:id"]}>
+        <Route exact path={["/game/:id"]}>
           <Home />
         </Route>
         <Route exact path="/library">
           <Library />
         </Route>
-        <Route path={["/library/game/:id"]}>
+        <Route exact path={["/library/game/:id"]}>
           <Library />
         </Route>
-        <Route path="/about">
+        <Route exact path="/about">
           <About />
         </Route>
       </Switch>

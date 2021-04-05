@@ -45,6 +45,7 @@ const GameList = styled(motion.div)`
   padding: 0rem 5rem;
   background: #1b1e23;
   min-height: 100vh;
+  text-align: center;
   h2 {
     padding: 5rem 0rem;
   }
@@ -66,8 +67,15 @@ const GameList = styled(motion.div)`
   }
   @media screen and (max-width: 768px) {
     padding: 0rem;
+    text-align: center;
     p {
       padding-left: 1.2rem;
+      padding-top: 1rem;
+      margin: 0rem;
+    }
+    h3 {
+      font-size: 1rem;
+      padding: 1rem 1.5rem;
     }
   }
 `;

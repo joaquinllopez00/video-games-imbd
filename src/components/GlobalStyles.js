@@ -28,7 +28,8 @@ const GlobalStyles = createGlobalStyle`
     }
     h2{
       font-size: 4rem;
-      font-family: 'DM Serif Display', serif;
+      font-family: 'Teko', sans-serif;
+      font-weight: 500;
       background: -webkit-linear-gradient(bottom right,#d13f3f,#ee1d52);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;

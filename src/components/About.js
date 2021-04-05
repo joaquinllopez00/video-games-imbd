@@ -25,9 +25,9 @@ export const About = () => {
 const AboutContainer = styled(motion.div)`
   padding: 1rem 4rem;
   background: #1b1e23;
-  height: 80.5vh;
+  height: 100vh;
   @media screen and (max-width: 768px) {
-    height: 100vh;
+    height: 110vh;
   }
 `;
 
@@ -37,8 +37,13 @@ const ContentContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   padding: 1rem 4rem;
+  text-align: center;
   p {
     color: white;
     padding: 0rem 0rem;
+  }
+
+  @media screen and (max-width: 1068px) {
+    padding: 0rem;
   }
 `;

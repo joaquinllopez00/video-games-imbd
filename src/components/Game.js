@@ -68,7 +68,7 @@ export const Game = ({ name, released, image, id, metacritic, genres }) => {
 };
 
 const StyledGame = styled(motion.div)`
-  height: 50vh;
+  height: 80vh;
   position: relative;
   text-align: center;
   border-radius: 1rem;
@@ -86,7 +86,7 @@ const StyledGame = styled(motion.div)`
   }
   img {
     width: 100%;
-    height: 85%;
+    height: 100%;
     object-fit: cover;
   }
   .title-container {

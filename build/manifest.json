@@ -1,6 +1,6 @@
 {
-  "short_name": "IVGDb",
-  "name": "Internet Video Game Database",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
